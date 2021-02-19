@@ -8,6 +8,7 @@ export type ServerConfig = {
 
 export type BotConfig = {
   roleID: string;
+  failChan: string;
   token: string;
 }
 
@@ -25,6 +26,7 @@ export default class Config {
     }
     this.bot = {
       roleID: '787096008814493706',
+      failChan: '811011245163413536',
       token: '',
     }
   }
