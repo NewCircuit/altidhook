@@ -48,8 +48,11 @@ export default class Server {
     );
   }
 
-  private async auth(req: Request, res: Response, next: NextFunction): Promise<void> {
-
+  private async auth(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
     const digestHdr = req.header('Digest');
 
     if (digestHdr === undefined) {
@@ -65,9 +68,6 @@ export default class Server {
         'md5',
         this.config.pubkey,
       ).update(body).digest('hex');
-
-      console.debug(`digest: ${digest}`);
-      console.debug(`new digest: ${newDigest}`)
 
       if (digest !== newDigest) {
         res.status(403);
