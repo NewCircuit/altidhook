@@ -1,0 +1,6 @@
+server:
+  pubkey: ''
+  port: 6942
+bot:
+  token: ''
+  roleID: '787096008814493706'
