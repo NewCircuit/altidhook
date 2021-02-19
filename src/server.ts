@@ -69,6 +69,9 @@ export default class Server {
         this.config.pubkey,
       ).update(body).digest('hex');
 
+      console.debug(`Digest: ${digest}`);
+      console.debug(`New Digest: ${digest}`);
+
       if (digest !== newDigest) {
         res.status(403);
         res.end();
@@ -81,6 +84,7 @@ export default class Server {
       return;
     }
 
+    console.log('Authorization passed.');
     next();
   }
 
@@ -93,6 +97,10 @@ export default class Server {
         return;
       }
 
+      console.debug(
+        'Granting role to'
+        + ` ${body.member.username}#${body.member.discriminator}`,
+       );
       await this.bot.addRole(body);
     } catch (e) {
       console.log(`An error occurred while granting a role`, e);
