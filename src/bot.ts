@@ -19,7 +19,9 @@ export default class Bot extends Client {
     try {
       const guild = await this.guilds.fetch(body.guild.id);
       const member = await guild.members.fetch(body.member.id);
-      await member.roles.add(this.config.roleID);
+      if (!member.roles.cache.has(this.config.roleID)) {
+        await member.roles.add(this.config.roleID);
+      }
       console.log(`Gave ${member.user.tag} verified role`);
     } catch (e) {
       console.error(`Failed to grant ${body.member.id} the role\n`, e);
