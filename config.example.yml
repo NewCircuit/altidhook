@@ -3,5 +3,5 @@ server:
   port: 6942
 bot:
   token: ''
-  roleID: '787096008814493706'
-  failChan: '811011245163413536'
+  roleID: ''
+  failChan: ''
